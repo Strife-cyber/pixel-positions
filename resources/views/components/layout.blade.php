@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Aguafina+Script&family=Hanken+Grotesk:ital,wght@0,100..600;1,100..900&family=Montaga&family=Pacifico&family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&display=swap" rel="stylesheet">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="bg-black text-white font-hanken-grotesk">
+<body class="bg-black text-white font-hanken-grotesk pb-20">
     <div class="px-10">
         <nav class="flex justify-between items-center py-4 border-b border-white/20">
             <div>
@@ -25,9 +25,17 @@
                 <a href="#">Companies</a>
             </div>
 
-            <div>
-                <a href="">Post a job</a>
-            </div>
+            @auth
+                <div>
+                    <a href="/jobs/create">Post a job</a>
+                </div>
+            @endauth
+            @guest
+                <div class="space-x-6 font-bold">
+                    <a href="/register">Sign Up</a>
+                    <a href="/login">Log In</a>
+                </div>
+            @endguest
         </nav>
 
         <main class="mt-10">
