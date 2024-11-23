@@ -11,7 +11,7 @@ class SearchController extends Controller
 {
     public function __invoke(): View|Factory|Application
     {
-        $jobs = Job::where('title', 'like', '%' . request('q') . '%') -> get();
+        $jobs = Job::with(['employer', 'tags'])->where('title', 'like', '%' . request('q') . '%') -> get();
 
         return view('results', ['jobs' => $jobs]);
     }
